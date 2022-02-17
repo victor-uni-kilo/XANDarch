@@ -1,0 +1,40 @@
+<div id="actions">
+    <a class="btn" href="/dashboard/edit-project/<%= project.id %>">View</a>
+    <div>
+        <button id="submit-update-proxy" class="btn">Update</button>
+    </div>
+</div>
+<h2 id="headline">Edit Project</h2>
+<div>
+    <form action="/dashboard/edit-project/<%= project.id %>?_method=PUT" method="POST" enctype="multipart/form-data" >
+        <%- include('../_form_fields') %> 
+        <% if(files){ %> 
+        <div id="unlocks">
+            <button id="set-cover" class="btn btn-small" type="button">change cover</button>
+            <button id="mark-delete" class="btn btn-small btn-danger" type="button">mark for deletion</button>
+        </div>
+        <% } %> 
+        <div class="images-container">
+            <% if(files){ %>    
+            <% files.forEach(file => { %> 
+            <div class="image-slot">
+                <div class="single-image">
+                    <img src="/images/<%=file._id%>" alt="<%= file._id %>" width="100px"> 
+                </div>
+                <div id="tick-options">
+                    <% if (JSON.stringify(file._id) != JSON.stringify(project.coverImage)) { %>
+                    <input class="radio" type="radio" name="coverImage" value="<%=file._id%>" disabled> 
+                    <% } else { %>  
+                    <input class="radio" type="radio" name="coverImage" value="<%=file._id%>" disabled checked> 
+                    <% } %>      
+                    <input class="checkbox" type="checkbox" name="markedForDeletion" value="<%=file._id%>" disabled>  
+                </div>
+            </div>
+            <% }); %> 
+        <% } else { %>
+            <p>No images to show.</p>
+        </div>
+        <% } %>    
+        <button id="submit-update" type="submit" hidden>Update</button>
+    </form> 
+</div>

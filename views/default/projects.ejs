@@ -1,0 +1,23 @@
+<div class="thumb-container">
+    <% projects.forEach( project => { %> 
+    <div data-categories="<%= project.categories %>" class="project-item">
+        <% if (project.coverImage) {%> 
+        <a href="/projects/<%= project.id %>">
+            <div class="thumb-image">
+                <img class="img-fit landscape" src="/images/<%=project.coverImage%>" alt="<%= project.title %>_cover">
+            </div>
+        </a>
+        <% } else { %> 
+        <div class="thumb-image">
+            <p>No images to show.</p>
+        </div>    
+        <% } %>
+        <div class="txt-container">
+            <a class="thumb-title" href="/projects/<%= project.id %>">
+                <span><%= project.title %></span>
+            </a>
+            <span>Project Type</span>
+        </div>
+    </div>
+    <% }) %> 
+</div>  

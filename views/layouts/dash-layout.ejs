@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Xandarch</title>
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <script defer src="/js/cms/deleteLock.js"></script>
+    <script defer src="/js/cms/fileUpload.js"></script>
+    <script defer src="/js/cms/submitProxy.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="sidebar">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="/dashboard/">DASHBOARD</a></li>
+                <li class="nav-item"><a href="/dashboard/edit-project">EDIT PROJECTS</a></li>
+                <li class="nav-item"><a href="/dashboard/edit-pages">EDIT PAGES</a></li>
+                <li class="nav-item"><a href="/logout">LOGOUT</a></li>
+            </ul>
+        </div>
+        <div id="faux-footer">
+            Footer Info
+        </div>
+        <div id="content-wrapper">
+            <%- body %>
+        </div>
+    </div>
+</body>
+</html>

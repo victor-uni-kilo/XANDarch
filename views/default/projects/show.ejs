@@ -1,0 +1,52 @@
+<div class="show-wrap">
+  <% if(files){ %>
+    <div class="proj-hero">
+      <img class="img-fit landscape" src="/images/<%=project.coverImage%>" alt="<%= project.title %>_cover">
+    </div>
+  <% } else { %>
+    <p>No images to show.</p>
+  <% } %>
+  <div class="text-section"> 
+    <div class="title-container">
+      <span><%= project.title %></span>
+    </div>
+    <div class="reader">
+      <div class="details">
+        <ul>
+          <li>
+            <span><i>LOCATION: </i><%= project.location %></span>
+          </li>
+          <li>
+            <span><i>AREA: </i><%= project.area %>m<sup>2</sup></span>
+          </li>
+          <li>
+            <span><i>
+                <%= project.projDate==null ? '' : project.projDate.toLocaleDateString('en-US')%>
+              </i></span>
+          </li>
+        </ul>
+      </div>
+      <div class="description">
+        <span class="text-body">
+          <%= project.description %>
+        </span>
+      </div>
+    </div>
+  </div>
+  <% if(files){ %> 
+  <div id="slide-rail">
+    <div id="slide-images">
+      <% files.forEach((file, index) =>{ %>
+        <% if (JSON.stringify(file._id) !=JSON.stringify(project.coverImage)) { %>
+          <div class="single-image">
+            <img class="img-fit" src="/images/<%=file._id%>" alt="<%= project.title %>_<%= index %>">
+          </div>
+        <% }; %>
+      <% }); %>
+    </div>
+  </div>
+  <% } else { %>
+      <p>No images to show.</p>
+  <% } %>
+</div>
+

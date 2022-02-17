@@ -1,0 +1,34 @@
+<div id="actions">
+    <a class="btn" href="/dashboard/edit-project/new"><b>+</b>Add New</a>
+</div>
+<h2 id="headline">Audition Projects</h2>
+<div id="search-container" >
+    <form action="/dashboard/edit-project" method="GET">
+        <button id="s-btn" class="btn" type="submit">Search</button>
+        <div>
+            <label for="title"></label>
+            <input type="text" name="title" placeholder="Enter project title..." value="<%= searchOptions.title %>">
+        </div>
+    </form>  
+</div>
+<div id="thumb-container">
+    <% projects.forEach(project => { %> 
+    <div class="project-item">
+        <% if (project.coverImage) {%> 
+        <div class="single-image thumb-image">
+            <img src="/images/<%=project.coverImage%>" alt="<%= project.coverImage %>">
+        </div>
+        <% } else { %> 
+        <div class="single-image thumb-image">
+            <p>No images to show.</p>
+        </div>    
+        <% } %>
+        <h3><%= project.title %></h3>
+        <div class="btn-group">
+            <a class="btn" href="/dashboard/edit-project/<%= project.id %>">View</a>
+            <a class="btn" href="/dashboard/edit-project/<%= project.id %>/edit">Edit</a>
+            <%- include('../partials/deleteForm', { url: `/dashboard/edit-project/${project.id}`}) %> 
+        </div>
+    </div>
+    <% }) %> 
+</div>  

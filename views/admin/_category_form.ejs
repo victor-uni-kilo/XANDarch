@@ -1,0 +1,42 @@
+<div class="add-categories">
+  <div id="add-btn" class="btn btn-round">+</div>
+  <textarea id="add-category" type="text" name="add-category"></textarea>
+  <div class="category-container">
+    <% project.categories.forEach(category=> { %>
+      <div class="category-item">
+        <span>
+          <%=category%>
+        </span>
+        <div class="btn btn-round btn-danger">x</div>
+      </div>
+      <% }) %>
+  </div>
+</div>
+
+<div id="categories">
+  <textarea type="text" name="categories"></textarea>
+</div>  
+
+<div id="kategorije">
+  <label class="label" for="kategorije">Kategorije</label>
+  <textarea type="text" name="kategorije"><%= project.kategorije %></textarea>
+</div>
+
+<script>
+  let text = document.querySelector("#add-category").value;
+  let phantomInput = document.querySelector("#categories")
+  let addButton = document.querySelector("#add-btn");
+  let categArr = [];
+  addButton.addEventListener('click', (e) => {
+    const alphaNum = /^[a-zA-Z0-9\-\s]+$/;
+    const allowedInput = alphaNum.test(text);
+    if (allowedInput !== false) {
+      text = text.trim().toLowerCase();
+      categArr.push(text);
+      phantomInput.value = categArr;
+      return alert(categArr);
+    } else {
+      return alert("Special characters not allowed!")
+    }
+  })
+</script>

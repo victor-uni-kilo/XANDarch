@@ -1,0 +1,33 @@
+<div>
+    <div>
+        <div class="card">
+            <h1>XANDARCH</h1>
+            <h4><%= title %></h4>
+            <%- include("../partials/err-msg") %> 
+            <%- include("../partials/log-err-msg") %> 
+            <form id="log-form" action="/auth" method="POST">
+                <div>
+                    <label for="username">Username</label>
+                    <input 
+                    type="text" 
+                    id="username" 
+                    name="username" 
+                    placeholder="Enter username..."
+                    value="<%= typeof username != 'undefined' ? username : '' %>" 
+                    /> 
+                </div>
+                <div>
+                    <label for="password">Password</label>
+                    <input 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    placeholder="Enter password..."
+                    />
+                </div>
+                <% var disable = "" %>  
+                <button type="submit" value="Login" <%= disable %> >Login</button> 
+        </div>
+    </div>
+</div>
+

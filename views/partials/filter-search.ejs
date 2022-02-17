@@ -1,0 +1,30 @@
+<script defer src="/js/front/filteredView.js"></script>
+<div class="nav-container">
+  <div id="search-container">
+    <div id="existing-categories">
+      <div class="cat-container">
+        <% let catArr = []; %> 
+        <% allProjects.forEach(element => { %>
+          <% element.categories.forEach(cat => { %>
+            <% if (!catArr.includes(cat)) { %>
+              <% catArr.push(cat); %> 
+              <span class="cat-tab" data-target="<%= cat %>"><%= cat %></span> 
+            <% } %>
+          <% }) %>
+        <% }) %>  
+        <div class="cat-clear" role="button">
+          <img src="/svg/cancel.svg" alt="clear-button" height="100%" width="100%" >
+        </div>    
+      </div>
+    </div>
+    <form action="/projects" method="GET">
+      <div>
+        <label for="title"></label>
+        <input type="text" name="title" placeholder="search by title" value="<%= searchOptions.title %>">
+      </div>
+      <button type="submit">
+        <img src="/svg/search.svg" alt="search-button" height="100%" width="100%" >
+      </button>
+    </form>
+  </div>
+</div>

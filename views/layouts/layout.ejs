@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, height=device-height,  initial-scale=1.0, user-scalable=no, user-scalable=0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Xandarch</title>
+  <link rel="shortcut icon" type="image/png" href="/favicon.png">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/index.css">
+  <script defer src="/js/front/interactions.js"></script>
+</head>
+<body>
+  <header>
+    <%- include('../partials/nav')%>
+    <% if (filters==true) { %>
+      <%- include('../partials/filter-search')%>
+    <% } %>
+  </header>
+  <div class="wrapper">
+    <%- body %>
+  </div>
+  <footer>::</footer>
+</body>
+
+</html>

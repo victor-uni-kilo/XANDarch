@@ -1,0 +1,55 @@
+/* 
+1. RESETS
+2. VARIABLES
+3. GLOBAL RULES
+*/
+/* RESETS */
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+button{
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  background: transparent;
+  /* inherit font & color from ancestor */
+  color: inherit;
+  font: inherit;
+  /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+  line-height: normal;
+  /* Corrects font smoothing for webkit */
+  -webkit-font-smoothing: inherit;
+  /* Corrects inability to style clickable `input` types in iOS */
+  -webkit-appearance: none;
+}
+a{
+  text-decoration: none;
+}
+/* VARIABLES */
+:root{
+  --font-main: Montserrat, sans-serif;
+  --clr-primary:rgb(94, 243, 8);
+  --clr-dark: #0f1031;
+  --clr-light: #f1f1f1;
+  --clr-mild: #f4f7f6;
+  --clr-highlight: #17bed4;
+  --clr-danger:  #f31041;
+  --clr-grid: #e7ebeb;
+  --clr-plates: #fcfcfc;
+  --clr-tertiary: #dfdfdf;
+  --hatch: red;
+}
+/* GLOBAL RULES */
+body{
+  font-family: var(--font-main);
+  color: var(--clr-dark);
+  font-size: 0.75rem;
+}
+.err-msg {
+  color: var(--clr-danger);
+}
+

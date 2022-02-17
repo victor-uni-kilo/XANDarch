@@ -1,0 +1,89 @@
+<div id="actions">
+  <a #id="back" class="btn" href="/dashboard/edit-project">View All</a>
+  <a #id="edit" class="btn" href="/dashboard/edit-project/<%= project.id %>/edit">Edit</a>
+</div>
+<h2 id="headline">Preview Project</h2>
+<div id="visuals">
+  <% if(files){ %>
+    <div id="cover-container">
+      <img src="/images/<%=project.coverImage%>" alt="<%= project.coverImage %>" width="250px">
+    </div>
+    <div class="images-container">
+      <% files.forEach(file=>{ %>
+        <% if (JSON.stringify(file._id) !=JSON.stringify(project.coverImage)) { %>
+          <div class="single-image">
+            <img src="/images/<%=file._id%>" alt="<%= file._id %>">
+          </div>
+        <% }; %>
+      <% }); %>
+    </div>
+    <% } else { %>
+      <p>No images to show.</p>
+      <% } %>
+</div>
+
+<div id="text-data">
+  <div class="title">
+    <h2>
+      <%= project.title %>
+    </h2>
+  </div>
+  <div class="naslov">
+    <h2>
+      <%= project.naslov %>
+    </h2>
+  </div>
+  <div class="en-detail">
+    <ul class="details">
+      <li>
+        <p><i>location: <%= project.location %></i></p>
+      </li>
+      <li>
+        <p><i>area: <%= project.area %>m<sup>2</sup></i></p>
+      </li>
+      <li>
+        <p><i>
+          <%= project.projDate==null ? '' : project.projDate.toLocaleDateString('en-US')%>
+        </i></p>
+      </li>
+    </ul>
+  </div>
+  <div class="sr-detail">
+    <ul class="details">
+      <li><i>lokacija: <%= project.lokacija %></i></li>
+      <li><i>površina: <%= project.area %>m<sup>2</sup></i></li>
+      <li><i>
+        <%= project.projDate==null ? '' : project.projDate.toLocaleDateString('sr-RS')%>
+      </i></li>
+    </ul>
+  </div>
+
+  <div id="existing-categories">
+    <div class="cat-container">
+        <% project.categories.forEach(cat=> { %>
+          <span class="cat-tab"><%= cat %></span>
+        <% }) %>
+    </div>
+  </div>
+  <div id="postojece-kategorije">
+    <div class="cat-container"> 
+      <% project.kategorije.forEach(kat => { %>
+        <span class="cat-tab"><%= kat %></span>
+      <% }) %>
+    </div>
+  </div>
+
+  <div class="description">
+    <p class="text-body">
+      <%= project.description %>
+    </p>
+  </div>
+  <div class="opis">
+    <p class="text-body">
+      <%= project.opis %>
+    </p>
+  </div>
+</div>
+<div id="delete-group">
+  <%- include('../../partials/deleteForm', { url: `/dashboard/edit-project/${project.id}`}) %>
+</div>

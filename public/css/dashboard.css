@@ -1,0 +1,324 @@
+:root{
+  --sidebar-width: calc(100px + calc(calc(100vw - 100px)*0.08));
+  --img-wd: 200px;
+  --def-btn-space: 0.3rem;
+}
+/* 
+#Comes after: main.css
+
+1.LAYOUT DIVS
+2.SIDEBAR
+3.COMMON
+*/
+
+/* LAYOUT DIVS*/
+#wrapper{
+  display: grid;
+  grid-template-columns:
+  var(--sidebar-width) calc(100vw - var(--sidebar-width));
+  grid-template-rows: 90vh 10vh;
+  grid-template-areas: 
+    "sidebar content"
+    "footer content";
+  height: 100vh;
+}
+#faux-footer{
+  grid-area: footer;
+  background-color: var(--clr-dark);
+  border-top: 1px solid white;
+}
+#content-wrapper{
+  grid-area: content;
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem 2rem 2rem;
+  overflow-y: scroll;
+}
+@media only screen and (max-width: 640px){
+  #wrapper{
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 100% 1fr;
+      grid-template-areas:
+      "sidebar"
+      "content"
+      "footer";
+  }   
+}
+/* SIDEBAR */
+#sidebar{
+  grid-area: sidebar;
+  background-color: var(--clr-dark);
+}
+.nav-list{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+}
+.nav-item{
+  padding: 1rem 0 1rem;
+  border-bottom: 1px dotted white;
+}
+.nav-item:hover{
+  border-right: 5px solid var(--clr-highlight) ;
+}
+.nav-item a {
+  margin: 2rem 2rem 2rem;
+  text-align: left;
+  color: white;
+}
+.nav-item a:hover{
+  cursor: pointer;
+}
+/* COMMON */
+#actions{
+  padding: 1rem 0rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  gap: 0.5rem;
+}
+#headline{
+  padding: 0.2rem 0;
+  border-top: 1px solid var(--clr-dark);
+  border-bottom: 1px solid var(--clr-dark);
+}
+/* SHOW PAGE */
+#visuals{
+  display: grid;
+  grid-template-columns: 1fr 1.85fr;
+  grid-template-areas: "c-img img";
+  grid-gap: 1rem;
+}
+#cover-container{
+  grid-area: c-img;
+  margin-top: 1rem;
+}
+#cover-container img{
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center top;
+}
+.images-container{
+  grid-area: img;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 0.5rem 0rem;
+  border-top: 1px solid var(--clr-mild);
+  border-bottom: 1px solid var(--clr-mild);
+}
+.single-image{
+  width: 100%;
+  height: calc(var(--img-wd)/1.5);
+  overflow: hidden;
+}
+.single-image img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.image-slot{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.no-img{
+  height:400px;
+}
+/* EDIT PAGE */
+/* MARK COVER & DELETION */
+#tick-options{
+  margin: 0 1rem 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+#text-data{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  padding: 1rem 0rem;
+  margin: 1rem 0rem;
+  border-top: 1px solid var(--clr-dark);
+  border-bottom: 1px solid var(--clr-dark);
+
+}
+#text-data>*{
+  text-indent: 0.3rem;
+  padding-bottom: 0.5re;
+}
+.details>li{
+  display: block;
+  padding-top: 0.5rem;
+  border-bottom: 1px dotted var(--clr-dark);
+}
+.text-body{
+  margin: 0.3;
+}
+/* DELETE RULES */
+#delete-group{
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+}
+#delete-group>*{
+  margin-left: var(--def-btn-space);
+}
+/* deleteForm.ejs */
+#delete-form>button{
+  width: 100%;
+}
+/* FORM FIELDS */
+.label{
+  padding: 0.2rem 0;
+  font-weight: 600;
+}
+#form-fields{
+  display: grid;
+  grid-template-columns:repeat(2, 1fr);
+  grid-template-rows: repeat(auto);
+  gap: 0rem 1rem;
+  width: 100wv;
+}
+#form-fields>*{
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+#description>textarea, #opis>textarea{
+  display: block;
+  height: 25vh;
+}
+/* CATEGORY UPDATES */
+.cat-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+.cat-tab{
+  padding: 0.2rem 0.5rem;
+  width: max-content;
+  border-radius: 0.2rem;
+  background-color: var(--clr-tertiary);
+}
+/*JS created*/
+#pre-upload{
+  margin: 0.5rem 0;
+  border-top: 1px solid var(--clr-mild);
+  border-bottom: 1px solid var(--clr-mild);
+}
+.preview-image{
+  margin: 0.2rem;
+}
+#image-input{
+  visibility: hidden;
+}
+/*controls for cover and deletion*/
+#unlocks{
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+}
+#unlocks>*{
+  margin-left: var(--def-btn-space);
+}
+/* EDIT PROJECT */
+#search-container{
+  padding: 0.5rem 0rem;
+}
+#search-container>form{
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+}
+#search-container>form>*{
+  margin-right: var(--def-btn-space);
+}
+/*--------------*/
+#thumb-container{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.project-item{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height:33vh;
+}
+.thumb-image{
+  width: 100%;
+}
+.btn-group{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.btn-group>*{
+  width: 30%;
+} 
+/* BUTTONS */
+.btn{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0.75rem;
+  height: 1.5rem;
+  border-radius: 0.4rem;
+  color: var(--clr-light);
+  background-color: var(--clr-dark);
+  white-space: nowrap;
+}
+.btn-small{
+  width: 10rem;
+  height: 1.5rem;
+}
+.btn-round{
+  padding: 0.5rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+}
+.btn-upload{
+  margin: 1rem 0;
+  width: 9rem;
+}
+.btn-disabled{
+  color: lightgray;
+  background-color: var(--clr-light);
+}
+.btn-danger{
+  color: var(--clr-light);
+  background-color: var(--clr-danger);
+}
+.btn:hover,
+.btn-danger:hover{
+  cursor: pointer;
+  transition: 300ms;
+  background-color: var(--clr-highlight);
+}
+.btn-disabled:hover{
+  cursor: default;
+  color: lightgray;
+  background-color: var(--clr-light);
+}
+.lock-btn{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0.4rem;
+  max-width: 1.5rem;
+  font-family: var(--font-main);
+  color: var(--clr-light);
+  background-color: var(--clr-dark);
+}  

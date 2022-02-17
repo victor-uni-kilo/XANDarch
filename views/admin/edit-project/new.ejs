@@ -1,0 +1,13 @@
+<div id="actions">
+    <a class="btn" href="/dashboard/edit-project">Back</a>
+    <div>
+        <button id="submit-update-proxy" class="btn">Create</button>
+    </div>
+</div>
+<h2 id="headline">New Project</h2>
+<div>
+    <form action="/dashboard/edit-project" method="POST" enctype="multipart/form-data">
+        <%- include("../_form_fields") %> 
+        <button id="submit-update" type="submit" hidden>Create</button>
+    </form>
+</div>
